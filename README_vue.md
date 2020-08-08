@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+## modules
+video.js
+
 ## Build Setup
 
 ``` bash
