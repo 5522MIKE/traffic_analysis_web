@@ -13,8 +13,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "video.js": "^7.8.4",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
