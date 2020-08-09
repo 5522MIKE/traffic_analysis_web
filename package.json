@@ -13,9 +13,14 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@jiaminghi/data-view": "^2.9.6",
     "echarts": "^4.8.0",
+=======
+    "router": "^1.3.5",
+>>>>>>> 2f9a9a0ccd7d7024a68848579a9f01970b64c352
     "video.js": "^7.8.4",
+    "view-design": "^4.3.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
