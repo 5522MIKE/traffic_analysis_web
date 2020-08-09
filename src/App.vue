@@ -1,13 +1,6 @@
 <!-- 展示模板 -->
 <template>
-<<<<<<< HEAD
-  <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
-  </div>
-=======
     <Main></Main>
->>>>>>> 2f9a9a0ccd7d7024a68848579a9f01970b64c352
 </template>
  
 <script>
