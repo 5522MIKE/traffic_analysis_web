@@ -3,7 +3,9 @@
 > A Vue.js project
 
 ## modules
-video.js
++ video.js@7.8.4
++ echarts@4.8.0
++ @jiaminghi/data-view@2.9.6
 
 ## Build Setup
 

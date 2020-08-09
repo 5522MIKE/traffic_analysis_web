@@ -9,6 +9,10 @@ import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 Vue.prototype.$video = Video
 
+// 数据可视化组件
+import dataV from '@jiaminghi/data-view'
+Vue.use(dataV)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
