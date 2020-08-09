@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import video from '@/components/video'
 import data from '@/components/data'
+import Main from '@/components/Main'
 
 Vue.use(Router)
 
@@ -10,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Main',
+      component: Main
     },
     {
       path: '/video',

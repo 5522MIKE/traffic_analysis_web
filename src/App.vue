@@ -1,17 +1,17 @@
 <!-- 展示模板 -->
 <template>
-    <Main></Main>
+    <router-view/>
 </template>
  
 <script>
 // 导入组件
-import Main from './components/Main'
+// import Main from './components/Main'
 // import Layout from './components/Layout'
 export default {
-  name: 'app',
-  components: {
-    Main
-  }
+  name: 'App',
+  // components: {
+  //   Main
+  // }
 }
 </script>
 <!-- 样式代码 -->
