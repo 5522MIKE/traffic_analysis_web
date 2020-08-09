@@ -3,6 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueRouter from 'vue-router'
+
+// 引入viewui库
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
+
+Vue.use(VueRouter);
+Vue.use(ViewUI);
 
 // 视频播放插件
 import Video from 'video.js'
@@ -11,10 +19,16 @@ Vue.prototype.$video = Video
 
 Vue.config.productionTip = false
 
+// The routing configuration
+// const RouterConfig = {
+//   routes: Routers
+// };
+// const router = new VueRouter(RouterConfig);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router: router,
   components: { App },
   template: '<App/>'
 })
