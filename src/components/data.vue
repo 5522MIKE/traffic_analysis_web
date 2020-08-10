@@ -36,8 +36,7 @@ export default {
 
 <style>
 .data{
-width: 100%;
-height: 100%;
 font-display: black;
+background: #808695;
 }
 </style>

@@ -19,7 +19,7 @@ name: "TestTwo",
 data() {
     return {
         videoSrc:require("../assets/1.mp4") 
-    };
+    };c
 },
 mounted() { 
     this.initVideo();
