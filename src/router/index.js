@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import video from '@/components/video'
 import data from '@/components/data'
 import Main from '@/components/Main'
+import echarts from '@/components/echarts'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/data',
       name: 'data',
       component: data
-    }
+    },
+    {
+      path: '/echarts',
+      name: 'echarts',
+      component: echarts
+    },
   ]
 })

@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import VueRouter from 'vue-router'
 
+// 引入echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 // 引入viewui库
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
