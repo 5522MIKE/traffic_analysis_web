@@ -1,16 +1,3 @@
-<style scoped>
-    .layout{
-        border: 1px solid #dcdee2;
-        background: #0859fc;
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .layout-header-bar{
-        background: #dcdee2;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    }
-</style>
 <template>
     <div class="layout">
         <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
@@ -38,8 +25,7 @@
                 <video
                     id="myVideo"
                     class="video-js"
-                    
-                >
+                    >
                     <source
                         src="../assets/1.mp4"
                         type="video/mp4"
@@ -47,8 +33,8 @@
                 </video>
             </Content>
             <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px'}">
-                <!-- <iframe src="http://www.baidu.com" width="600px" height="588px" frameborder="0"></iframe> -->
-                <data/>
+                    <p v-if='vIf == 1'><dv-active-ring-chart :config="config" style="width:200px;height:200px" /></p>
+                    <p v-else>Hello v-else</p>
             </Sider>
         </Layout>
         <Footer><Table :columns="columns1" :data="data1"></Table></Footer>
@@ -62,6 +48,27 @@ export default {
 name: "TestTwo",
 data() {
     return {
+        vIf:1,
+        config:{
+                data:[
+                    {
+                        name:'1',
+                        value:12,
+                    },
+                    {
+                        name:'2',
+                        value:17
+                    },
+                    {
+                        name:'3',
+                        value:23
+                    }
+                ],
+                digitalFlopStyle: {
+                    fontSize: 25,
+                    fill: '#42b983'
+                },
+            },
 
         // columns1:[
         //             {
@@ -127,7 +134,7 @@ data() {
                 ],
 
         videoSrc:require("../assets/1.mp4") 
-    };c
+    };
 },
 mounted() { 
     this.initVideo();
@@ -153,20 +160,31 @@ methods: {
     });
     },
     getUrl(name){
-       this.showhone = false;
-       console.log(name);
-       this.src=null;
-       switch(name){
-           case "data1":
-               this.src="http://localhost:8080/#/data"
-               break;
-            case "data2":
-                this.src="http://www.baidu.com"
+        this.showhone = false;
+        console.log(name);
+        switch(name){
+            case "data1":
+                this.vIf=1;
                 break;
-       }
-       alert(this.src)
-    }
-   
+            case "data2":
+                this.vIf=0;
+                break;
+        }
+        }
 }
 };
 </script>
+
+<style scoped>
+    .layout{
+        border: 1px solid #dcdee2;
+        background: #0859fc;
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .layout-header-bar{
+        background: #dcdee2;
+        box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    }
+</style>
