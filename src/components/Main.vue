@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
+        <Sider :style="{position: 'fixed', height: '100vh', width: '10vh' ,left: 0, overflow: 'auto'}">
             <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="getUrl">
                 <Submenu name="1">
                     <template slot="title">
@@ -19,7 +19,7 @@
                 </Submenu>
             </Menu>
         </Sider>
-        <Layout :style="{marginLeft: '200px'}">
+        <Layout :style="{marginLeft: '200px',height: '100vh' }">
             <Layout>
             <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
                 <video
@@ -32,7 +32,7 @@
                     >
                 </video>
             </Content>
-            <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px'}">
+            <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
                     <p v-if='vIf == 1'><dv-active-ring-chart :config="config" style="width:200px;height:200px" /></p>
                     <p v-else>Hello v-else</p>
             </Sider>
@@ -70,66 +70,68 @@ data() {
                 },
             },
 
-        // columns1:[
-        //             {
-        //                 title: '时间',
-        //                 key: 'time'
-        //             },
-        //             {
-        //                 title: '车牌号',
-        //                 key: 'ID'
-        //             },
-        //             {
-        //                 title: '违法行为',
-        //                 key: 'acident'
-        //             }
-        //         ],
-        // data1: [
-        //             {
-        //                 time: '0.03s',
-        //                 ID: '粤',
-        //                 acident: 'asdjfo'
-        //             }
-        //         ],
-
         columns1: [
                     {
-                        title: 'Name',
-                        key: 'name'
+                        title: '时间',
+                        key: 'time'
                     },
                     {
-                        title: 'Age',
-                        key: 'age'
+                        title: '车牌号',
+                        key: 'id'
                     },
                     {
-                        title: 'Address',
-                        key: 'address'
+                        title: '违规行为',
+                        key: 'acident'
                     }
                 ],
                 data1: [
                     {
-                        name: 'John Brown',
-                        age: 18,
-                        address: 'New York No. 1 Lake Park',
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
                         date: '2016-10-03'
                     },
                     {
-                        name: 'Jim Green',
-                        age: 24,
-                        address: 'London No. 1 Lake Park',
-                        date: '2016-10-01'
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
                     },
                     {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park',
-                        date: '2016-10-02'
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
                     },
                     {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park',
-                        date: '2016-10-04'
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
+                    },
+                    {
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
+                    },
+                    {
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
+                    },
+                    {
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
+                    },
+                    {
+                        time: '5s',
+                        id: '粤B88888',
+                        acident: '车太贵了',
+                        date: '2016-10-03'
                     }
                 ],
 
@@ -178,7 +180,7 @@ methods: {
 <style scoped>
     .layout{
         border: 1px solid #dcdee2;
-        background: #0859fc;
+        background: #dcdee2;
         position: relative;
         border-radius: 4px;
         overflow: hidden;
