@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <Sider :style="{position: 'fixed', height: '100vh', width: '10vh' ,left: 0, overflow: 'auto'}">
+        <Sider  :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
             <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="getUrl">
                 <Submenu name="1">
                     <template slot="title">
@@ -37,7 +37,16 @@
                     <p v-else>Hello v-else</p>
             </Sider>
         </Layout>
-        <Footer><Table :columns="columns1" :data="data1"></Table></Footer>
+        <Footer>
+            <div>
+                <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:400px; heigth:10px;" @keyup.enter.native="limit"/> 
+                <Button :size="buttonSize" icon="ios-download-outline" type="primary" style="position: relative; left:1024px; heigth:10px;" @click="download">违规数据下载</Button>              
+                <br><br>
+                <Input  search enter-button v-model="value2" placeholder="搜索违规信息" style="width:400px; heigth:10px; left:500px" @keyup.enter.native="search"/>
+                <br><br>
+                <Table border :columns="columns1" :data="data1"></Table>
+            </div>           
+        </Footer>
         </Layout>
     </div>
 </template>
@@ -48,6 +57,8 @@ export default {
 name: "TestTwo",
 data() {
     return {
+        value1:'',
+        value2:'',
         vIf:1,
         config:{
                 data:[
@@ -172,7 +183,16 @@ methods: {
                 this.vIf=0;
                 break;
         }
-        }
+    },
+    download(){
+        alert("下载！")
+    },
+    search(){
+        alert(this.value2+"搜索！")
+    },
+    limit(){
+        alert(this.value1)
+    }
 }
 };
 </script>
