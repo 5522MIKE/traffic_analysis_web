@@ -1,52 +1,55 @@
 <template>
     <div class="layout">
-        <Sider  :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
-            <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="getUrl">
-                <Submenu name="1">
-                    <template slot="title">
-                        <Icon type="ios-navigate"></Icon>
-                        首页
-                    </template>
-                    <MenuItem name="1-1">首页</MenuItem>
-                </Submenu>
-                <Submenu name="2">
-                    <template slot="title">
-                        <Icon type="ios-keypad"></Icon>
-                        数据
-                    </template>
-                    <MenuItem name="data1">数据1</MenuItem>
-                    <MenuItem name="data2">数据2</MenuItem>
-                </Submenu>
-            </Menu>
-        </Sider>
-        <Layout :style="{marginLeft: '200px',height: '100vh' }">
-            <Layout>
-            <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
-                <video
-                    id="myVideo"
-                    class="video-js"
-                    >
-                    <source
-                        src="../assets/1.mp4"
-                        type="video/mp4"
-                    >
-                </video>
-            </Content>
-            <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
-                    <p v-if='vIf == 1'><dv-active-ring-chart :config="config" style="width:200px;height:200px" /></p>
-                    <p v-else>Hello v-else</p>
+        <Layout>
+            <Sider>
+                <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="getUrl">
+                    <Submenu name="1">
+                        <template slot="title">
+                            <Icon type="ios-navigate"></Icon>
+                            首页
+                        </template>
+                        <MenuItem name="1-1">首页</MenuItem>
+                    </Submenu>
+                    <Submenu name="2">
+                        <template slot="title">
+                            <Icon type="ios-keypad"></Icon>
+                            数据
+                        </template>
+                        <MenuItem name="data1">数据1</MenuItem>
+                        <MenuItem name="data2">数据2</MenuItem>
+                    </Submenu>
+                </Menu>
             </Sider>
-        </Layout>
-        <Footer>
-            <div>
-                <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:400px; heigth:10px;" @keyup.enter.native="limit"/> 
-                <Button :size="buttonSize" icon="ios-download-outline" type="primary" style="position: relative; left:1024px; heigth:10px;" @click="download">违规数据下载</Button>              
-                <br><br>
-                <Input  search enter-button v-model="value2" placeholder="搜索违规信息" style="width:400px; heigth:10px; left:500px" @keyup.enter.native="search"/>
-                <br><br>
-                <Table border :columns="columns1" :data="data1"></Table>
-            </div>           
-        </Footer>
+
+            <Layout>
+                <Layout>
+                    <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
+                        <video
+                            id="myVideo"
+                            class="video-js"
+                            >
+                            <source
+                                src="../assets/1.mp4"
+                                type="video/mp4"
+                            >
+                        </video>
+                    </Content>
+                    <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
+                            <p v-if='vIf == 1'><dv-active-ring-chart :config="config" style="width:200px;height:200px" /></p>
+                            <p v-else>Hello v-else</p>
+                    </Sider>
+                </Layout>
+                <Footer>
+                    <div>
+                        <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/> 
+                        <Button :size="buttonSize" icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
+                        <br><br>
+                        <Input  search enter-button v-model="value2" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
+                        <br><br>
+                        <Table border :columns="columns1" :data="data1"></Table>
+                    </div>           
+                </Footer>
+            </Layout>
         </Layout>
     </div>
 </template>
