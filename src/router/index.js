@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import video from '@/components/video'
-import data from '@/components/data'
+import vehicle from '@/components/vehicle'
 import Main from '@/components/Main'
-import echarts from '@/components/echarts'
+import number from '@/components/number'
 
 Vue.use(Router)
 
@@ -21,14 +21,14 @@ export default new Router({
       component: video
     },
     {
-      path: '/data',
-      name: 'data',
-      component: data
+      path: '/vehicle',
+      name: 'vehicle',
+      component: vehicle
     },
     {
-      path: '/echarts',
-      name: 'echarts',
-      component: echarts
+      path: '/number',
+      name: 'number',
+      component: number
     },
   ]
 })
