@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import video from '@/components/video'
+import VideoPlay from '@/components/VideoPlay'
 import vehicle from '@/components/vehicle'
 import Main from '@/components/Main'
 import number from '@/components/number'
@@ -18,7 +18,7 @@ export default new Router({
     {
       path: '/video',
       name: 'video',
-      component: video
+      component: VideoPlay
     },
     {
       path: '/vehicle',
