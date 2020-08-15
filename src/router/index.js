@@ -30,5 +30,10 @@ export default new Router({
       name: 'number',
       component: number
     },
+    {
+      path: '/h',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
   ]
 })
