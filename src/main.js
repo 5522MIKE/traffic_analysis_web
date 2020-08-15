@@ -16,6 +16,10 @@ import 'view-design/dist/styles/iview.css'
 Vue.use(VueRouter);
 Vue.use(ViewUI);
 
+// 引入 axios
+import axios from 'axios'
+Vue.prototype.$axios = axios
+
 // 视频播放插件
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'

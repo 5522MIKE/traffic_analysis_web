@@ -6,6 +6,8 @@
 + video.js@7.8.4
 + echarts@4.8.0
 + @jiaminghi/data-view@2.9.6
++ axios@0.19.2
++ view-design@4.3.2
 
 ## Build Setup
 

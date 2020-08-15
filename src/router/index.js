@@ -36,6 +36,11 @@ export default new Router({
       path: '/infomation',
       name: 'infomation',
       component: infomation
-    }
+    },
+    {
+      path: '/h',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
   ]
 })
