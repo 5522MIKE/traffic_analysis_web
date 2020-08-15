@@ -5,6 +5,8 @@ import VideoPlay from '@/components/VideoPlay'
 import vehicle from '@/components/vehicle'
 import Main from '@/components/Main'
 import number from '@/components/number'
+import infomation from '@/components/infomation'
+import { info } from 'autoprefixer'
 
 Vue.use(Router)
 
@@ -30,5 +32,10 @@ export default new Router({
       name: 'number',
       component: number
     },
+    {
+      path: '/infomation',
+      name: 'infomation',
+      component: infomation
+    }
   ]
 })

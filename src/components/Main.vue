@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
         <Layout>
-            <Sider>
+            <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
                 <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="getUrl">
                     <Submenu name="1">
                         <template slot="title">
@@ -18,21 +18,24 @@
                         <MenuItem name="data1">机动车违规行为统计</MenuItem>
                         <MenuItem name="data2">机动车数量统计</MenuItem>
                     </Submenu>
+                    <Submenu name="3">
+                        <template slot="title">
+                            <Icon type="ios-keypad"></Icon>
+                            信息查询
+                        </template>
+                        <MenuItem name="info">信息查询</MenuItem>
+                    </Submenu>
                 </Menu>
             </Sider>
 
-            <Layout>
+            <Layout :style="{marginLeft: '200px'}">
+                <Header :style="{background: '#f8f8f9', height: '50px'}">
+                    <p style=" font-size:24px; font-weight:bold; position: relative; left: 500px;" >
+                        智 能 交 通 场 景 分 析
+                    </p>
+                </Header>
                 <Layout>
                     <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
-                        <!-- <video
-                            id="myVideo"
-                            class="video-js"
-                            >
-                            <source
-                                src="../assets/1.mp4"
-                                type="video/mp4"
-                            >
-                        </video> -->
                         <VideoPlay/>
                     </Content>
                     <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
@@ -44,10 +47,6 @@
                     <div>
                         <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/> 
                         <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
-                        <br><br>
-                        <Input  search enter-button v-model="value2" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
-                        <br><br>
-                        <Table border :columns="columns1" :data="data1"></Table>
                     </div>           
                 </Footer>
             </Layout>
@@ -68,72 +67,7 @@ export default {
     data() {
         return {
             value1:'',
-            value2:'',
             vIf:1,
-            columns1: [
-                        {
-                            title: '时间',
-                            key: 'time'
-                        },
-                        {
-                            title: '车牌号',
-                            key: 'id'
-                        },
-                        {
-                            title: '违规行为',
-                            key: 'acident'
-                        }
-                    ],
-                    data1: [
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        },
-                        {
-                            time: '5s',
-                            id: '粤B88888',
-                            acident: '车太贵了',
-                            date: '2016-10-03'
-                        }
-                    ],
         };
     },
     methods: {
@@ -147,13 +81,12 @@ export default {
                 case "data2":
                     this.vIf=0;
                     break;
+                case "info":
+                    break;
             }
         },
         download(){
             alert("下载！")
-        },
-        search(){
-            alert(this.value2+"搜索！")
         },
         limit(){
             alert(this.value1)
