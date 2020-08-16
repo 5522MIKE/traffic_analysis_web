@@ -36,7 +36,7 @@
                         </p>
                     </Header>
                     <Layout>
-                        <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
+                        <Content :style="{margin: '20px 20px 0'}">
                             <VideoPlay/>
                         </Content>
                         <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">

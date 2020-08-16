@@ -2,9 +2,10 @@
     <div>
         <br><br>
         <Input  search enter-button v-model="value2" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
-        <!-- <br><br>
-        <Button type="primary" @click="add">添加违规行为</Button> -->
-        <br><br>
+        <br>
+        <div>
+            <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
+        </div>
         <Table border :columns="columns1" :data="data1"></Table>
     </div>    
 </template>
@@ -23,7 +24,7 @@
     export default {
         methods:{
                 search(){
-                    alert(this.value2+"搜索！")
+                    alert(this.value2+" : ")
                 },
                 delete(index){
                     alert("delete:"+index)
@@ -31,10 +32,15 @@
                 },
                 show(){
                     alert("show")
+                },
+                getDate(date){
+                    this.date=date
+                    alert(this.date)
                 }
         },
         data () {
             return {
+                date:'2018-02-02',
                 value2:'',
                 columns1: [
                     {
