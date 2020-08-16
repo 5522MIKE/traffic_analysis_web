@@ -41,6 +41,6 @@ export default new Router({
       path: '/h',
       name: 'HelloWorld',
       component: HelloWorld
-    },
+    }
   ]
 })

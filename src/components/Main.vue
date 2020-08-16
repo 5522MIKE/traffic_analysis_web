@@ -8,7 +8,7 @@
                             <Icon type="ios-navigate"></Icon>
                             首页
                         </template>
-                        <MenuItem name="1-1">首页</MenuItem>
+                        <MenuItem name="index">首页</MenuItem>
                     </Submenu>
                     <Submenu name="2">
                         <template slot="title">
@@ -29,26 +29,29 @@
             </Sider>
 
             <Layout :style="{marginLeft: '200px'}">
-                <Header :style="{background: '#f8f8f9', height: '50px'}">
-                    <p style=" font-size:24px; font-weight:bold; position: relative; left: 500px;" >
-                        智 能 交 通 场 景 分 析
-                    </p>
-                </Header>
-                <Layout>
-                    <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
-                        <VideoPlay/>
-                    </Content>
-                    <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
-                            <p v-if='vIf == 1'><vehicle/></p>
-                            <p v-else><number/></p>
-                    </Sider>
-                </Layout>
-                <Footer>
-                    <div>
-                        <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/> 
-                        <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
-                    </div>           
-                </Footer>
+                <div v-if="page==1">
+                    <Header :style="{background: '#f8f8f9', height: '50px'}">
+                        <p style=" font-size:24px; font-weight:bold; position: relative; left: 500px;" >
+                            智 能 交 通 场 景 分 析
+                        </p>
+                    </Header>
+                    <Layout>
+                        <Content :style="{margin: '20px 20px 0', background: '#dcdee2', maxWidth: '1024px'}">
+                            <VideoPlay/>
+                        </Content>
+                        <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
+                                <p v-if='vIf == 1'><vehicle/></p>
+                                <p v-else><number/></p>
+                        </Sider>
+                    </Layout>
+                    <Footer>
+                        <div>
+                            <Input   v-model="value1"  placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/> 
+                            <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
+                        </div>           
+                    </Footer>
+                </div>
+                <div v-else><information/></div>              
             </Layout>
         </Layout>
     </div>
@@ -57,17 +60,20 @@
 import number from '@/components/number'
 import vehicle from '@/components/vehicle'
 import VideoPlay from '@/components/VideoPlay'
+import information from '@/components/infomation'
 /* eslint-disable */
 export default {
     components: {
         number,
         vehicle,
-        VideoPlay
+        VideoPlay,
+        information
     },
     data() {
         return {
             value1:'',
             vIf:1,
+            page:1,
         };
     },
     methods: {
@@ -82,6 +88,10 @@ export default {
                     this.vIf=0;
                     break;
                 case "info":
+                    this.page=0;
+                    break;
+                case "index":
+                    this.page=1;
                     break;
             }
         },

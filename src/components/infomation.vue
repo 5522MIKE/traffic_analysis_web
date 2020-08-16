@@ -17,6 +17,7 @@
             upload_time: '5201-3-14',
             illegal_time: '20',
             illegal: '车太贵',
+            img: 'https://dev-file.iviewui.com/YSlcnG8cnT6zMRGskMn4F5E0sghiFB9w/large'
         })
     }
     export default {
@@ -24,9 +25,6 @@
                 search(){
                     alert(this.value2+"搜索！")
                 },
-                // add(){
-                //     alert("添加")
-                // },
                 delete(index){
                     alert("delete:"+index)
                     this.data1.splice(index,1)
@@ -61,13 +59,16 @@
                     },
                     {
                         title: '违法图片',
-                        key: 'picture',
-                        render: (h,params) => {
-                            return(
-                                <div>
-                                    <i-button type="primary"   size="small" onClick={()=>{this.show(params.index)}}>显示图片</i-button>
-                                </div>
-                            );
+                        key: 'img',
+                        render: (h, params) => {
+                            return h('viewer', [
+                                h('img', {
+                                    attrs: {
+                                        src: params.row.img,
+                                        style: 'width: 40px;height: 40px;'
+                                    }
+                                })
+                            ])
                         },
                     },
                     {

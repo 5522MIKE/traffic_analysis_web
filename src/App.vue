@@ -2,7 +2,7 @@
 <template>
     <router-view/>
 </template>
- 
+
 <script>
 // 导入组件
 // import Main from './components/Main'
