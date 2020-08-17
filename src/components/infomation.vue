@@ -1,20 +1,12 @@
 <template>
-    <div>
-        <Header :style="{background: '#f8f8f9', height: '50px'}">
-            <p style=" font-size:24px; font-weight:bold; position: relative; left: 500px;" >
-            智 能 交 通 场 景 分 析
-            </p>
-        </Header>
-        <br>
-        <Layout :style="{margin:'10px'}">
+        <Layout :style="{margin:'10px',width:'1300px'}">
             <Input  search enter-button v-model="value2" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
             <br>
             <div>
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
-        </Layout>
-    </div>    
+        </Layout>   
 </template>
 <script>
     const data1  = [];
