@@ -6,9 +6,10 @@
                     <Submenu name="1">
                         <template slot="title">
                             <Icon type="ios-navigate"></Icon>
-                            首页
+                            页面
                         </template>
                         <MenuItem name="index">首页</MenuItem>
+                        <MenuItem name="info">信息查询</MenuItem>
                     </Submenu>
                     <Submenu name="2">
                         <template slot="title">
@@ -17,13 +18,6 @@
                         </template>
                         <MenuItem name="data1">机动车违规行为统计</MenuItem>
                         <MenuItem name="data2">机动车数量统计</MenuItem>
-                    </Submenu>
-                    <Submenu name="3">
-                        <template slot="title">
-                            <Icon type="ios-keypad"></Icon>
-                            信息查询
-                        </template>
-                        <MenuItem name="info">信息查询</MenuItem>
                     </Submenu>
                 </Menu>
             </Sider>
