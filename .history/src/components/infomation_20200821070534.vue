@@ -38,15 +38,14 @@
                     this.date=date
                     alert(this.date)
                 },
-                // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
                     alert(mydata)
                 }
         },
         data () {
             return {
-                date:'', // *  日期数据
-                searchData:'',  // * 搜索输入框数据
+                date:'',
+                searchData:'',
                 columns1: [
                     {
                         title: 'ID',

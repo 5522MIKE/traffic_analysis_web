@@ -4,9 +4,9 @@
             <br>
             <div>
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
-                <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
-                <Button type="info" @click="getData(searchData)">test</Button>
             </div>
+            <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
+            <Button type="info" @click="getData(searchData)">test</Button>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
 </template>
@@ -38,15 +38,14 @@
                     this.date=date
                     alert(this.date)
                 },
-                // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
                     alert(mydata)
                 }
         },
         data () {
             return {
-                date:'', // *  日期数据
-                searchData:'',  // * 搜索输入框数据
+                date:'',
+                searchData:'',
                 columns1: [
                     {
                         title: 'ID',
