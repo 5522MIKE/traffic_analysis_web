@@ -23,12 +23,10 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      author: 123,
       msg: 'Welcome to Your Vue.js App',
       // books list data
-      books: [
-        {name: 'test', author: 't'},
-        {name: 'test2', author: 't2'}
-      ],
+      books: [],
       // book data in the form
       inputBook: {
         "name": "",
@@ -38,9 +36,10 @@ export default {
   },
   methods: {
     loadBooks () {
-      getBooks().then(response => {
+      getBooks('',this.author).then(response => {
         this.books = response.data
       })
+      console.log(getBooks(1))
     }, // load books list when visit the page
     bookSubmit () {
       postBook(this.inputBook.name, this.inputBook.author).then(response => {
