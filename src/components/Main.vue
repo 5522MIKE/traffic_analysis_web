@@ -103,6 +103,7 @@ export default {
             alert(this.value1)
         },
         getVideo(i){
+            // * 检测点击的是哪个按钮
             switch(i){
                 case 1:
                     alert("1");
