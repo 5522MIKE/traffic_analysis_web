@@ -3,6 +3,7 @@ import axiosInstance from './index'
 
 const axios = axiosInstance
 
+// 测试数据
 export const getBooks = (name,author) => {return axios(
     {
         methods: 'get',
@@ -13,7 +14,26 @@ export const getBooks = (name,author) => {return axios(
 	    }
     }
 )}
-
 export const postBook = (name, author) => {return axios.post(`http://localhost:8000/api/data/`, {'name': name, 'author': author})}
 
-export const getIllegalData = () => {return axios.get(`http://localhost:8000/api/IllegalData/`)}
+// 违规信息
+export const getIllegalData = (id) => {return axios(
+    {
+        methods: 'get',
+	    url: 'http://localhost:8000/api/IllegalData/',
+	    params: {
+            id: id
+	    }
+    }
+)}
+
+// 路口车辆数量
+export const getTrafficFlow = (car_number) => {return axios(
+    {
+        methods: 'get',
+	    url: 'http://localhost:8000/api/TrafficFlow/',
+	    params: {
+            car_number: car_number
+	    }
+    }
+)}
