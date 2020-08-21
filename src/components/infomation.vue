@@ -1,11 +1,12 @@
 <template>
         <Layout :style="{margin:'10px',width:'1300px',height:'680px'}">
-            <Input  search enter-button v-model="searchData" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
+            <Input  search enter-button v-model="plate" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
             <br>
             <div>
+                <!-- 传递时间 -->
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
                 <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
-                <Button type="info" @click="getData(searchData)">test</Button>
+                <Button type="info" @click="getData(plate)">test</Button>
                 <br><br>
                 <i-select v-model="illegalMassage" clearable style="width:200px" @on-change="getIllegal">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
@@ -20,12 +21,13 @@ import {getIllegalData} from '../api/api.js'
     export default {
         methods:{
                 loaddata(){
-                    getIllegalData(this.searchData).then(response =>{
+                    getIllegalData(this.plate,this.date,this.illegalMassage).then(response =>{
                         this.data1 = response.data
+                        console.log(this.date)
                     })
                 },
                 search(){
-                    alert(this.value2+" : ")
+                    this.loaddata()
                 },
                 delete(index){
                     alert("delete:"+index)
@@ -36,15 +38,19 @@ import {getIllegalData} from '../api/api.js'
                 },
                 getDate(date){
                     this.date=date
-                    alert(this.date)
+                    //alert(this.date)
+                    this.loaddata()
+                    console.log(this.date)
                 },
                 // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
+                    // console.log(mydata)
                     this.loaddata()
-                    alert(mydata)
+                    
                 },
                 getIllegal(){
-                    alert(this.illegalMassage)
+                    this.loaddata()
+                    // alert(this.illegalMassage)
                 }
         },
         created: function () {
@@ -53,7 +59,8 @@ import {getIllegalData} from '../api/api.js'
         data () {
             return {
                 date:'', // *  日期数据
-                searchData:'',  // * 搜索输入框数据
+                plate:'',  // * 搜索输入框数据
+                illegalMassage: '', // * 违规行为
                 columns1: [
                     {
                         title: 'ID',
@@ -128,7 +135,6 @@ import {getIllegalData} from '../api/api.js'
                         label: 'Canberra'
                     }
                 ],
-                illegalMassage: ''
             }
         }
     }
