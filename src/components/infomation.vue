@@ -15,11 +15,11 @@ import {getIllegalData} from '../api/api.js'
     const data1  = [];
     export default {
         methods:{
-            loaddata(){
-                getIllegalData().then(response =>{
-                    this.data1 = response.data
-                })
-            },
+                loaddata(){
+                    getIllegalData(this.searchData).then(response =>{
+                        this.data1 = response.data
+                    })
+                },
                 search(){
                     alert(this.value2+" : ")
                 },
@@ -36,6 +36,7 @@ import {getIllegalData} from '../api/api.js'
                 },
                 // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
+                    this.loaddata()
                     alert(mydata)
                 }
         },
