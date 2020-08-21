@@ -6,6 +6,10 @@
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
                 <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
                 <Button type="info" @click="getData(searchData)">test</Button>
+                <br><br>
+                <i-select v-model="illegalMassage" clearable style="width:200px" @on-change="getIllegal">
+                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                </i-select>
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
@@ -41,6 +45,9 @@
                 // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
                     alert(mydata)
+                },
+                getIllegal(){
+                    alert(this.illegalMassage)
                 }
         },
         data () {
@@ -94,7 +101,34 @@
                         },
                     }
                 ],
-                data1: data1
+                data1: data1,
+                cityList: [
+                    {
+                        value: 'New York',
+                        label: 'New York'
+                    },
+                    {
+                        value: 'London',
+                        label: 'London'
+                    },
+                    {
+                        value: 'Sydney',
+                        label: 'Sydney'
+                    },
+                    {
+                        value: 'Ottawa',
+                        label: 'Ottawa'
+                    },
+                    {
+                        value: 'Paris',
+                        label: 'Paris'
+                    },
+                    {
+                        value: 'Canberra',
+                        label: 'Canberra'
+                    }
+                ],
+                illegalMassage: ''
             }
         }
     }
