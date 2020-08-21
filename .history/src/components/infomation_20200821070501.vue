@@ -4,22 +4,26 @@
             <br>
             <div>
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
-                <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
-                <Button type="info" @click="getData(searchData)">test</Button>
             </div>
+            <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
+            <Button type="info" @click="getData(searchData)">test</Button>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
 </template>
 <script>
-import {getIllegalData} from '../api/api.js'
     const data1  = [];
+    for(let i=0; i<2 ; ++i){
+        data1.push({
+            id:  i,
+            plate: '粤B88888',
+            upload_time: '5201-3-14',
+            illegal_time: '20',
+            illegal: '车太贵',
+            img: 'https://dev-file.iviewui.com/YSlcnG8cnT6zMRGskMn4F5E0sghiFB9w/large'
+        })
+    }
     export default {
         methods:{
-            loaddata(){
-                getIllegalData().then(response =>{
-                    this.data1 = response.data
-                })
-            },
                 search(){
                     alert(this.value2+" : ")
                 },
@@ -34,18 +38,14 @@ import {getIllegalData} from '../api/api.js'
                     this.date=date
                     alert(this.date)
                 },
-                // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
                     alert(mydata)
                 }
         },
-        created: function () {
-            this.loaddata()
-        },
         data () {
             return {
-                date:'', // *  日期数据
-                searchData:'',  // * 搜索输入框数据
+                date:'',
+                searchData:'',
                 columns1: [
                     {
                         title: 'ID',

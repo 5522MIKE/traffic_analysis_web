@@ -1,25 +1,27 @@
 <template>
-        <Layout :style="{margin:'10px',width:'1300px',height:'680px'}">
-            <Input  search enter-button v-model="searchData" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
+        <Layout :style="{margin:'10px',width:'1300px'}">
+            <Input  search enter-button v-model="value2" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
             <br>
             <div>
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate"></date-picker>
-                <!-- 测试参数传递用，版本投入使用前可删除（也可以保留） -->
-                <Button type="info" @click="getData(searchData)">test</Button>
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
 </template>
 <script>
-import {getIllegalData} from '../api/api.js'
     const data1  = [];
+    for(let i=0; i<20 ; ++i){
+        data1.push({
+            id:  i,
+            plate: '粤B88888',
+            upload_time: '5201-3-14',
+            illegal_time: '20',
+            illegal: '车太贵',
+            img: 'https://dev-file.iviewui.com/YSlcnG8cnT6zMRGskMn4F5E0sghiFB9w/large'
+        })
+    }
     export default {
         methods:{
-            loaddata(){
-                getIllegalData().then(response =>{
-                    this.data1 = response.data
-                })
-            },
                 search(){
                     alert(this.value2+" : ")
                 },
@@ -33,19 +35,12 @@ import {getIllegalData} from '../api/api.js'
                 getDate(date){
                     this.date=date
                     alert(this.date)
-                },
-                // ! 测试参数传递的函数，正式使用前删除
-                getData(mydata){
-                    alert(mydata)
                 }
-        },
-        created: function () {
-            this.loaddata()
         },
         data () {
             return {
-                date:'', // *  日期数据
-                searchData:'',  // * 搜索输入框数据
+                date:'2018-02-02',
+                value2:'',
                 columns1: [
                     {
                         title: 'ID',

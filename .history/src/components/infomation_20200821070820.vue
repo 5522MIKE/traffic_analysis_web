@@ -11,15 +11,19 @@
         </Layout>   
 </template>
 <script>
-import {getIllegalData} from '../api/api.js'
     const data1  = [];
+    for(let i=0; i<2 ; ++i){
+        data1.push({
+            id:  i,
+            plate: '粤B88888',
+            upload_time: '5201-3-14',
+            illegal_time: '20',
+            illegal: '车太贵',
+            img: 'https://dev-file.iviewui.com/YSlcnG8cnT6zMRGskMn4F5E0sghiFB9w/large'
+        })
+    }
     export default {
         methods:{
-            loaddata(){
-                getIllegalData().then(response =>{
-                    this.data1 = response.data
-                })
-            },
                 search(){
                     alert(this.value2+" : ")
                 },
@@ -38,9 +42,6 @@ import {getIllegalData} from '../api/api.js'
                 getData(mydata){
                     alert(mydata)
                 }
-        },
-        created: function () {
-            this.loaddata()
         },
         data () {
             return {
