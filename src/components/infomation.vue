@@ -6,7 +6,7 @@
                 <i-select v-model="illegalMassage" clearable placeholder="请选择违规行为" @on-change="getIllegal" :style="{width:'300px'}">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </i-select>
-                <Input  search v-model="plate" placeholder="搜索违规车牌"  @keyup.enter.native="search" :style="{width:'300px'}"/>
+                <Input  search enter-button v-model="plate" placeholder="搜索违规车牌"  @keyup.enter.native="search" :style="{float:'left',width:'300px'}"/>
                 
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
