@@ -24,7 +24,7 @@
             <div class="div-bar">
                 <Layout>
                     <div>
-                        <Header :style="{background: '#f8f8f9', height: '50px'}">
+                        <Header :style="{background: '#f8f8f9', height: '40px'}">
                             <p style=" font-size:24px; font-weight:bold; position: relative; left: 500px;" >
                                 智 能 交 通 场 景 分 析
                             </p>
@@ -33,6 +33,10 @@
                             <Layout>
                                 <Content :style="{margin: '20px 20px 0'}">
                                     <VideoPlay/>
+                                    <Button type="info" size='small' @click="getVideo(1)">1</Button>
+                                    <Button type="info" size='small' @click="getVideo(2)">2</Button>
+                                    <Button type="info" size='small' @click="getVideo(3)">3</Button>
+                                    <Button type="info" size='small' @click="getVideo(4)">4</Button>
                                 </Content>
                                 <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
                                         <p v-if='vIf == 1'><vehicle/></p>
@@ -97,6 +101,23 @@ export default {
         },
         limit(){
             alert(this.value1)
+        },
+        getVideo(i){
+            // * 检测点击的是哪个按钮
+            switch(i){
+                case 1:
+                    alert("1");
+                    break;
+                case 2:
+                    alert("2");
+                    break;
+                case 3:
+                    alert("3");
+                    break;
+                case 4:
+                    alert("4");
+                    break;
+            }
         }
     }
 };
