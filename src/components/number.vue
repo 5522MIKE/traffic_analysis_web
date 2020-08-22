@@ -40,7 +40,7 @@ export default {
             // 绘制图表
             myChart.setOption({
                 title: {
-                    text: '路口机动车数量',
+                    text: '路口交通饱和度',
                     // subtext: '纯属虚构'
                 },
                 tooltip: {
