@@ -1,12 +1,13 @@
 <template>
         <Layout :style="{margin:'10px',width:'1300px',height:'680px'}">
-            <Input  search enter-button v-model="plate" placeholder="搜索违规信息"  @keyup.enter.native="search"/>
             <br>
             <div>
                 <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate" :style="{float:'left',width:'300px'}"></date-picker>
-                <i-select v-model="illegalMassage" clearable placeholder="请选择违规行为" @on-change="getIllegal" :style="{float:'right',width:'300px'}">
+                <i-select v-model="illegalMassage" clearable placeholder="请选择违规行为" @on-change="getIllegal" :style="{width:'300px'}">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </i-select>
+                <Input  search v-model="plate" placeholder="搜索违规车牌"  @keyup.enter.native="search" :style="{width:'300px'}"/>
+                
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
