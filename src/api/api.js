@@ -47,3 +47,6 @@ export const getIllegalStatistics = () => {return axios(
 	    url: 'http://localhost:8000/api/IllegalStatistics/',
     }
 )}
+
+//
+export const postSpeedLimit = (speed) => {return axios.post(`http://localhost:8000/api/SpeedLimit/`, {'speed': speed})}

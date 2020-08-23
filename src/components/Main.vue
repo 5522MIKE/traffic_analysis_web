@@ -58,6 +58,7 @@
     </div>
 </template>
 <script>
+import {postSpeedLimit} from '../api/api.js'
 import number from '@/components/number'
 import vehicle from '@/components/vehicle'
 import VideoPlay from '@/components/VideoPlay'
@@ -100,6 +101,9 @@ export default {
             alert("下载！")
         },
         limit(){
+            postSpeedLimit(this.value1).then(response => {
+                console.log(response)
+            })
             alert(this.value1)
         },
         getVideo(i){
