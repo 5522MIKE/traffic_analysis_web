@@ -29,7 +29,7 @@ export const getIllegalData = (plate, upload_time, illegal) => {return axios(
     }
 )}
 
-// 路口车辆数量
+// 路口饱和度
 export const getTrafficFlow = (car_number) => {return axios(
     {
         methods: 'get',
@@ -37,5 +37,13 @@ export const getTrafficFlow = (car_number) => {return axios(
 	    params: {
             car_number: car_number
 	    }
+    }
+)}
+
+// 车辆违规统计
+export const getIllegalStatistics = () => {return axios(
+    {
+        methods: 'get',
+	    url: 'http://localhost:8000/api/IllegalStatistics/',
     }
 )}
