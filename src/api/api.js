@@ -70,3 +70,5 @@ export const postVideo = (video_path) => {return axios(
 	    }
     }
 )}
+//
+export const postSpeedLimit = (speed) => {return axios.post(`http://localhost:8000/api/SpeedLimit/`, {'speed': speed})}
