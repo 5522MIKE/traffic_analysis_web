@@ -1,22 +1,5 @@
 <template>
-    <div class="note" :style ="note">
-        <Button type="info"> gan</Button>
+    <div id="myChart" :style="{width: '500px', height: '570px',position:'relative',top:'15px'}">
+        <img src="../assets/logo.png">
     </div>
 </template>
-<script>
-    export default {
-        name: 'productdetailspage',
-        data() {
-            return {
-                note: {
-                    backgroundImage: "url(" + require("../assets/save.png") + ")",
-                    backgroundColor:  "#19be6b",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "25px auto",
-                    marginTop: "5px",
-                    height: "600px"
-                },
-            }
-        },
-    }
-</script>
