@@ -11,9 +11,9 @@ export default {
     name: 'hello',
     data () {
     return {
-        vehicle : [2,7,5,9,6,4,11],
+        people : [],
         car : [],
-        motor : [1,5,4,3,2,8,2],
+        motor : [],
         msg: '路口机动车数量',
     }
     },
@@ -29,6 +29,14 @@ export default {
                 var dataLength = Object.keys(response.data)
                 for(var i=0;i<dataLength.length;i++){
                     this.car.push(Object.entries(response.data[i])[0][1])
+                    // console.log(Object.entries(response.data[i])[0][1])
+                }
+                for(var i=0;i<dataLength.length;i++){
+                    this.motor.push(Object.entries(response.data[i])[1][1])
+                    console.log(Object.entries(response.data[i])[1][1])
+                }
+                for(var i=0;i<dataLength.length;i++){
+                    this.people.push(Object.entries(response.data[i])[2][1])
                     // console.log(Object.entries(response.data[i])[0][1])
                 }
                 this.drawLine()
@@ -47,7 +55,7 @@ export default {
                     trigger: 'axis'
                 },
                 legend: {
-                    data: ['机动车', '汽车','摩托车']
+                    data: ['行人', '汽车','摩托车']
                 },
                 toolbox: {
                     show: true,
@@ -75,10 +83,10 @@ export default {
                 },
                 series: [
                     {
-                        name: '机动车',
+                        name: '行人',
                         type: 'line',
                         // 数据接口
-                        data: this.vehicle,
+                        data: this.people,
                         markPoint: {
                             data: [
                                 {type: 'max', name: '最大值'},
