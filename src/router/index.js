@@ -6,6 +6,7 @@ import vehicle from '@/components/vehicle'
 import Main from '@/components/Main'
 import number from '@/components/number'
 import infomation from '@/components/infomation'
+import backGround from '@/components/backGround'
 import { info } from 'autoprefixer'
 
 Vue.use(Router)
@@ -41,6 +42,11 @@ export default new Router({
       path: '/h',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path:  '/a',
+      name: 'backGround',
+      component: backGround
     }
   ]
 })
