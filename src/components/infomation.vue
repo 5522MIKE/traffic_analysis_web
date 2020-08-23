@@ -7,7 +7,7 @@
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </i-select>
                 <Input  search enter-button v-model="plate" placeholder="搜索违规车牌"  @keyup.enter.native="search" :style="{float:'left',width:'300px'}"/>
-                
+                <Button type="info" @click="clear">清空</Button>
             </div>
             <Table border :columns="columns1" :data="data1"></Table>
         </Layout>   
@@ -46,8 +46,14 @@ import {getIllegalData} from '../api/api.js'
                     
                 },
                 getIllegal(){
-                    this.loaddata()
                     // alert(this.illegalMassage)
+                    this.loaddata()
+                },
+                clear(){
+                    this.date = ''
+                    this.plate = ''
+                    this.illegalMassage = ''
+                    this.loaddata()
                 }
         },
         created: function () {
