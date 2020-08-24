@@ -4,6 +4,7 @@
 
 <script>
 // 数据接口
+import GLOBAL from '../api/global.js'
 import {getTrafficFlow} from '../api/api.js'
 let time_list = ['5s', '10s', '15s', '20s', '25s', '30s', '35s']
 
@@ -23,9 +24,14 @@ export default {
     // mounted(){
     //     this.drawLine();
     // },
+    mounted() {
+        this.$nextTick(() => {
+            setInterval(this.loaddata, 5000);
+        })
+    },
     methods: {
         loaddata(){
-            getTrafficFlow().then(response =>{
+            getTrafficFlow(GLOBAL.videoId).then(response =>{
                 var dataLength = Object.keys(response.data)
                 for(var i=0;i<dataLength.length;i++){
                     this.car.push(Object.entries(response.data[i])[0][1])

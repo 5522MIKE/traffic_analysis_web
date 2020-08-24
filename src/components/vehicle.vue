@@ -4,6 +4,7 @@
 
 <script>
 // 数据接口
+import GLOBAL from '../api/global.js'
 import {getIllegalStatistics} from '../api/api.js'
 let category = ['碾压实线', '不礼让行人', '不按信号灯行驶', '超速行驶', ]
 // let violation = [
@@ -24,11 +25,16 @@ export default {
         this.drawLine();
     },
     created: function () {
-            this.loaddata();
+        this.loaddata();
+    },
+    mounted() {
+            this.$nextTick(() => {
+                setInterval(this.loaddata, 5000);
+            })
     },
     methods: {
         loaddata(){
-            getIllegalStatistics().then(response => {
+            getIllegalStatistics(GLOBAL.videoId).then(response => {
                 this.drawLine(response.data)
             })
         },

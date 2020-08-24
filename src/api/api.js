@@ -31,21 +31,24 @@ export const getIllegalData = (plate,videoId, upload_time, illegal) => {return a
 )}
 
 // 路口饱和度
-export const getTrafficFlow = (car_number) => {return axios(
+export const getTrafficFlow = (videoId) => {return axios(
     {
         methods: 'get',
 	    url: 'http://localhost:8000/api/TrafficFlow/',
 	    params: {
-            car_number: car_number
+            videoId: videoId
 	    }
     }
 )}
 
 // 车辆违规统计
-export const getIllegalStatistics = () => {return axios(
+export const getIllegalStatistics = (videoId) => {return axios(
     {
         methods: 'get',
-	    url: 'http://localhost:8000/api/IllegalStatistics/',
+        url: 'http://localhost:8000/api/IllegalStatistics/',
+        params: {
+            videoId: videoId
+	    }
     }
 )}
 
