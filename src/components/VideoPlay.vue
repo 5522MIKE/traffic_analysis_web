@@ -36,7 +36,9 @@ mounted() {
 // },
 methods: {
     limit(){
-        postVideo(this.fileName,this.speed).then(response =>{
+        postVideo(this.fileName,this.speed,GLOBAL.num).then(response =>{
+            GLOBAL.num = GLOBAL.num+1
+            console.log("num: "+GLOBAL.num)
             // console.log(response)
         })
         this.loadVideo()

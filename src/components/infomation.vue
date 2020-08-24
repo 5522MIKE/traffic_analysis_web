@@ -14,7 +14,7 @@
 </template>
 <script>
 import GLOBAL from '../api/global.js'
-console.log("id"+ GLOBAL.videoId)
+// console.log("id"+ GLOBAL.videoId)
 import {getIllegalData} from '../api/api.js'
     const data1  = [];
     export default {
@@ -64,7 +64,7 @@ import {getIllegalData} from '../api/api.js'
         },
         mounted() {
                 this.$nextTick(() => {
-                    setInterval(this.loaddata, 100);
+                    setInterval(this.loaddata, 5000);
                 })
         },
         data () {
