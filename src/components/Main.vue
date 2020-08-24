@@ -9,6 +9,7 @@
                             页面
                         </template>
                         <MenuItem name="index">首页</MenuItem>
+                        <MenuItem name="info">信息查询</MenuItem>
                     </Submenu>
                     <Submenu name="2">
                         <template slot="title">
@@ -28,7 +29,7 @@
                                 智 能 交 通 场 景 分 析
                             </p>
                         </Header>
-                        <div>
+                        <div v-if="page == 1">
                             <Layout>
                                 <Content :style="{margin: '20px 20px 0'}">
                                     <VideoPlay/>
@@ -49,8 +50,9 @@
                                     <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
                                 </div>           
                             </Footer>
+                            <div><information/></div>
                         </div>
-                        <div><information/></div> 
+                        <div v-else><information/></div> 
                     </div>             
                 </Layout>
             </div>
@@ -77,6 +79,7 @@ export default {
         return {
             value1:'',
             vIf:0,
+            page: 1,
         };
     },
     methods: {
