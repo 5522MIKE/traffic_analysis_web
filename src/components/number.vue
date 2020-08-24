@@ -12,24 +12,34 @@ export default {
     name: 'hello',
     data () {
     return {
+        temp:'',
         people : [],
         car : [],
         motor : [],
         msg: '路口机动车数量',
     }
     },
-    created: function () {
-            this.loaddata();
-    },
+    // created: function () {
+    //         this.loaddata();
+    // },
     // mounted(){
     //     this.drawLine();
     // },
     mounted() {
         this.$nextTick(() => {
-            setInterval(this.loaddata, 5000);
+            setInterval(this.idJudge, 5000);
         })
     },
     methods: {
+        idJudge(){
+            if(this.temp!=GLOBAL.videoId){
+                this.loaddata()
+                this.temp = GLOBAL.videoId
+                console.log("videoId"+GLOBAL.videoId)
+            }else{
+                this.temp = GLOBAL.videoId
+            }
+        },
         loaddata(){
             getTrafficFlow(GLOBAL.videoId).then(response =>{
                 var dataLength = Object.keys(response.data)

@@ -18,21 +18,30 @@ export default {
     name: 'hello',
     data () {
         return {
+            temp:'',
             msg: '机动车违规行为统计',
         }
     },
     mounted(){
         this.drawLine();
     },
-    created: function () {
-        this.loaddata();
-    },
+    // created: function () {
+    //     this.loaddata();
+    // },
     mounted() {
             this.$nextTick(() => {
-                setInterval(this.loaddata, 5000);
+                setInterval(this.idJudge, 5000);
             })
     },
     methods: {
+        idJudge(){
+            if(this.temp!=GLOBAL.videoId){
+                this.loaddata()
+                this.temp = GLOBAL.videoId
+            }else{
+                this.temp = GLOBAL.videoId
+            }
+        },
         loaddata(){
             getIllegalStatistics(GLOBAL.videoId).then(response => {
                 this.drawLine(response.data)

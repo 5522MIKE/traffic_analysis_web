@@ -19,6 +19,15 @@ import {getIllegalData} from '../api/api.js'
     const data1  = [];
     export default {
         methods:{
+                idJudge(){
+                    if(this.temp!=GLOBAL.videoId){
+                        this.loaddata()
+                        this.temp = GLOBAL.videoId
+                        console.log(this.temp)
+                    }else{
+                        this.temp = GLOBAL.videoId
+                    }
+                },
                 loaddata(){
                     getIllegalData(this.plate,GLOBAL.videoId,this.date,this.illegalMassage).then(response =>{
                         this.data1 = response.data
@@ -69,6 +78,7 @@ import {getIllegalData} from '../api/api.js'
         },
         data () {
             return {
+                temp:'',
                 date:'', // *  日期数据
                 plate:'',  // * 搜索输入框数据
                 illegalMassage: '', // * 违规行为
