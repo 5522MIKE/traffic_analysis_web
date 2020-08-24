@@ -41,7 +41,9 @@ methods: {
             console.log("num: "+GLOBAL.num)
             // console.log(response)
         })
-        this.loadVideo()
+        this.$nextTick(() => {
+            setInterval(this.loadVideo(), 2000);
+        })
     },
     loadVideo(){
         getVideo(this.fileName).then(response =>{
