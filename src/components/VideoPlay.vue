@@ -35,9 +35,9 @@ methods: {
         //建议浏览器是否应在<video>加载元素后立即开始下载视频数据。
         preload: "auto",
         //设置视频播放器的显示宽度（以像素为单位）
-        width: "600px",
+        width: "960px",
         //设置视频播放器的显示高度（以像素为单位）
-        height: "600px",
+        height: "640px",
         //可选择的播放速度
         playbackRates : [ 0.5, 1.0, 1.5, 2.0 ], 
         notSupportedMessage : '此视频暂无法播放，请稍后再试'

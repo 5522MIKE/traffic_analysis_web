@@ -29,20 +29,14 @@
                                 智 能 交 通 场 景 分 析
                             </p>
                         </Header>
-                        <div v-if="page == 1">
+                        <div v-if="page==1"><information/></div> 
+                        <div v-else-if="page==2" :style="{margin: '20px 400px 0'}"><vehicle/></div>
+                        <div v-else-if="page==3" :style="{margin: '20px 400px 0'}"><number/></div>
+                        <div v-else>
                             <Layout>
-                                <Content :style="{margin: '20px 20px 0'}">
+                                <Content :style="{margin: '20px 160px 0'}">
                                     <VideoPlay/>
-                                    <Button type="info" size='small' @click="getVideo(1)">1</Button>
-                                    <Button type="info" size='small' @click="getVideo(2)">2</Button>
-                                    <Button type="info" size='small' @click="getVideo(3)">3</Button>
-                                    <Button type="info" size='small' @click="getVideo(4)">4</Button>
                                 </Content>
-                                <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
-                                        <p v-if="vIf==1"><vehicle/></p>
-                                        <p v-else-if="vIf==2"><number/></p>
-                                        <p v-else><backGround/></p>
-                                </Sider>
                             </Layout>
                             <Footer>
                                 <div>
@@ -52,7 +46,6 @@
                             </Footer>
                             <div><information/></div>
                         </div>
-                        <div v-else><information/></div> 
                     </div>             
                 </Layout>
             </div>
@@ -79,7 +72,7 @@ export default {
         return {
             value1:'',
             vIf:0,
-            page: 1,
+            page: 0,
         };
     },
     methods: {
@@ -88,16 +81,16 @@ export default {
             console.log(name);
             switch(name){
                 case "data1":
-                    this.vIf=1;
+                    this.page=2;
                     break;
                 case "data2":
-                    this.vIf=2;
+                    this.page=3;
                     break;
                 case "info":
-                    this.page=0;
+                    this.page=1;
                     break;
                 case "index":
-                    this.page=1;
+                    this.page=0;
                     break;
             }
         },
