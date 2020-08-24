@@ -17,12 +17,13 @@ export const getBooks = (name,author) => {return axios(
 export const postBook = (name, author) => {return axios.post(`http://localhost:8000/api/data/`, {'name': name, 'author': author})}
 
 // 违规信息
-export const getIllegalData = (plate, upload_time, illegal) => {return axios(
+export const getIllegalData = (plate,videoId, upload_time, illegal) => {return axios(
     {
         methods: 'get',
 	    url: 'http://localhost:8000/api/IllegalData/',
 	    params: {
             plate: plate,
+            videoId: videoId,
             upload_time: upload_time,
             illegal: illegal
 	    }

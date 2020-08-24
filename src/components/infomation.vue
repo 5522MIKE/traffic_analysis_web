@@ -2,7 +2,7 @@
         <Layout :style="{margin:'10px',width:'1300px',height:'680px'}">
             <br>
             <div>
-                <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate" :style="{float:'left',width:'300px'}"></date-picker>
+                <date-picker type="date" clearable placeholder="请选择上传时间" @on-change="getDate" :style="{float:'left',width:'300px'}"></date-picker>
                 <i-select v-model="illegalMassage" clearable placeholder="请选择违规行为" @on-change="getIllegal" :style="{width:'300px'}">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </i-select>
@@ -13,14 +13,17 @@
         </Layout>   
 </template>
 <script>
+import GLOBAL from '../api/global.js'
+console.log("id"+ GLOBAL.videoId)
 import {getIllegalData} from '../api/api.js'
     const data1  = [];
     export default {
         methods:{
                 loaddata(){
-                    getIllegalData(this.plate,this.date,this.illegalMassage).then(response =>{
+                    getIllegalData(this.plate,GLOBAL.videoId,this.date,this.illegalMassage).then(response =>{
                         this.data1 = response.data
-                        console.log(this.date)
+                        // console.log(GLOBAL.videoId)
+                        // console.log(this.date)
                     })
                 },
                 search(){
@@ -37,7 +40,7 @@ import {getIllegalData} from '../api/api.js'
                     this.date=date
                     //alert(this.date)
                     this.loaddata()
-                    console.log(this.date)
+                    // console.log(this.date)
                 },
                 // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
@@ -59,6 +62,11 @@ import {getIllegalData} from '../api/api.js'
         created: function () {
             this.loaddata()
         },
+        mounted() {
+                this.$nextTick(() => {
+                    setInterval(this.loaddata, 100);
+                })
+        },
         data () {
             return {
                 date:'', // *  日期数据
@@ -68,6 +76,10 @@ import {getIllegalData} from '../api/api.js'
                     {
                         title: 'ID',
                         key: 'id'
+                    },
+                    {
+                        title: '视频ID',
+                        key: 'videoId'
                     },
                     {
                         title: '车牌号',

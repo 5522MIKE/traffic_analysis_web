@@ -33,7 +33,7 @@ export default {
                 }
                 for(var i=0;i<dataLength.length;i++){
                     this.motor.push(Object.entries(response.data[i])[1][1])
-                    console.log(Object.entries(response.data[i])[1][1])
+                    // console.log(Object.entries(response.data[i])[1][1])
                 }
                 for(var i=0;i<dataLength.length;i++){
                     this.people.push(Object.entries(response.data[i])[2][1])

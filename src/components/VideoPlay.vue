@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import GLOBAL from '../api/global.js'
 import {getVideo,postVideo} from '../api/api.js'
 /* eslint-disable */
 export default {
@@ -42,9 +43,11 @@ methods: {
     },
     loadVideo(){
         getVideo(this.fileName).then(response =>{
-            console.log(response.data)
+            // console.log(response.data)
             // this.myPlayer.dispose()
-            console.log(Object.entries(response.data[0])[0][1])
+            // console.log(Object.entries(response.data[0])[2][1])
+            GLOBAL.videoId = Object.entries(response.data[0])[2][1]
+            // console.log(GLOBAL.videoId)
             let path = Object.entries(response.data[0])[0][1]
             this.videoSrc = require('../assets/'+path)
             // console.log(this.videoSrc)

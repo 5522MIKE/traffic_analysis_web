@@ -34,7 +34,7 @@
                                     <VideoPlay/>
                                 </Content>
                                 <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
-                                        <p v-if="vIF == 0"><backGround/></p>
+                                        <p v-if="vIf == 0"><backGround/></p>
                                         <p v-else-if='vIf == 2'><vehicle/></p>
                                         <p v-else><number/></p>
                                 </Sider>
@@ -79,7 +79,7 @@ export default {
     methods: {
         getUrl(name){
             this.showhone = false;
-            console.log(name);
+            // console.log(name);
             switch(name){
                 case "data1":
                     this.vIf=2;
