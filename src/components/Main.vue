@@ -29,26 +29,23 @@
                                 智 能 交 通 场 景 分 析
                             </p>
                         </Header>
-                        <div v-if="page == 1">
+                        <div v-if="page==1"><information/></div> 
+                        <div v-else-if="page==2" :style="{margin: '20px 400px 0'}"><vehicle/></div>
+                        <div v-else-if="page==3" :style="{margin: '20px 400px 0'}"><number/></div>
+                        <div v-else>
                             <Layout>
-                                <Content :style="{margin: '20px 20px 0'}">
+                                <Content :style="{margin: '20px 160px 0'}">
                                     <VideoPlay/>
                                 </Content>
-                                <Sider :style="{margin: '20px 20px 0', background: '#dcdee2',minHeith: '580px', minWidth: '500px' , background: '#e8eaec'}">
-                                        <p v-if="vIf == 0"><backGround/></p>
-                                        <p v-else-if='vIf == 2'><vehicle/></p>
-                                        <p v-else><number/></p>
-                                </Sider>
                             </Layout>
                             <Footer>
-                                <div>
+                                <div :style="{margin: '20px 160px 0'}">
                                     <!-- <Input   v-model="value1" clearable placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/>  -->
-                                    <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
+                                    <!-- <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>               -->
                                 </div>           
                             </Footer>
                             <div><information/></div> 
                         </div>
-                        <div v-else><information/></div> 
                     </div>             
                 </Layout>
             </div>
@@ -75,8 +72,8 @@ export default {
     data() {
         return {
             // value1:'',
-            vIf:0,
-            page: 1,
+            // vIf:0,
+            page: 0,
         };
     },
     methods: {
@@ -85,16 +82,16 @@ export default {
             // console.log(name);
             switch(name){
                 case "data1":
-                    this.vIf=2;
+                    this.page=2;
                     break;
                 case "data2":
-                    this.vIf=3;
+                    this.page=3;
                     break;
                 case "info":
-                    this.page=0;
+                    this.page=1;
                     break;
                 case "index":
-                    this.page=1;
+                    this.page=0;
                     break;
             }
         },

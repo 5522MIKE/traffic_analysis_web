@@ -9,7 +9,9 @@
     <Upload action="//jsonplaceholder.typicode.com/posts/" :before-upload="changeVideo" accept="mp4">
         <Button icon="ios-cloud-upload-outline" >选择上传文件</Button>
     </Upload>
-    <Input   v-model="speed" clearable placeholder="请输入当前路段限速(km/h)" style="width:200px; heigth:10px;" @keyup.enter.native="limit"/> 
+    <Input   v-model="speed" clearable placeholder="请输入当前路段限速(km/h)" style="width:200px; heigth:10px;" @keyup.enter.native="limit"/>
+    <br><br>
+    <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button> 
 </div>
 </template>
 
@@ -79,9 +81,9 @@ methods: {
             //建议浏览器是否应在<video>加载元素后立即开始下载视频数据。
             preload: "auto",
             //设置视频播放器的显示宽度（以像素为单位）
-            width: "600px",
+            width: "960px",
             //设置视频播放器的显示高度（以像素为单位）
-            height: "600px",
+            height: "640px",
             //可选择的播放速度
             playbackRates : [ 0.5, 1.0, 1.5, 2.0 ], 
             notSupportedMessage : '请上传视频'
