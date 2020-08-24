@@ -41,7 +41,7 @@
                             </Layout>
                             <Footer>
                                 <div>
-                                    <Input   v-model="value1" clearable placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/> 
+                                    <!-- <Input   v-model="value1" clearable placeholder="请输入当前路段限速(km/h)" style="width:1075px; heigth:10px;" @keyup.enter.native="limit"/>  -->
                                     <Button  icon="ios-download-outline" type="primary"  @click="download">违规数据下载</Button>              
                                 </div>           
                             </Footer>
@@ -54,7 +54,7 @@
     </div>
 </template>
 <script>
-import {postSpeedLimit} from '../api/api.js'
+// import {postSpeedLimit} from '../api/api.js'
 import number from '@/components/number'
 import vehicle from '@/components/vehicle'
 import VideoPlay from '@/components/VideoPlay'
@@ -72,7 +72,7 @@ export default {
     },
     data() {
         return {
-            value1:'',
+            // value1:'',
             vIf:0,
         };
     },
@@ -98,12 +98,12 @@ export default {
         download(){
             alert("下载！")
         },
-        limit(){
-            postSpeedLimit(this.value1).then(response => {
-                console.log(response)
-            })
-            alert(this.value1)
-        }
+        // limit(){
+        //     postSpeedLimit(this.value1).then(response => {
+        //         console.log(response)
+        //     })
+        //     alert(this.value1)
+        // }
     }
 };
 </script>

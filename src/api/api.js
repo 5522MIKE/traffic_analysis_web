@@ -61,12 +61,15 @@ export const getVideo = (video_path) => {return axios(
 	    }
     }
 )}
-export const postVideo = (video_path) => {return axios(
-    {
-        methods: 'post',
-	    url: 'http://localhost:8000/api/Video/',
-	    params: {
-            video_path: video_path
-	    }
-    }
-)}
+export const postVideo = (video_path, speed) => {return axios.post(`http://localhost:8000/api/Video/`, {'video_path': video_path,'speed': speed})}
+    
+// export const postVideo = (video_path, speed) => {return axios(
+//     {
+//         methods: 'post',
+// 	    url: 'http://localhost:8000/api/Video/',
+// 	    params: {
+//             video_path: video_path,
+//             speed: speed
+// 	    }
+//     }
+// )}

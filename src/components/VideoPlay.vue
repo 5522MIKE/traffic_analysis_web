@@ -9,6 +9,7 @@
     <Upload action="//jsonplaceholder.typicode.com/posts/" :before-upload="changeVideo" accept="mp4">
         <Button icon="ios-cloud-upload-outline" >选择上传文件</Button>
     </Upload>
+    <Input   v-model="speed" clearable placeholder="请输入当前路段限速(km/h)" style="width:200px; heigth:10px;" @keyup.enter.native="limit"/> 
 </div>
 </template>
 
@@ -20,8 +21,10 @@ data() {
     return {
         // videoSrc:require("../assets/1.mp4"),
         // videoSrc:require("../assets/1.mp4"),
+        speed:'',
         myPlayer:'',
         videoSrc:'',
+        fileName:'',
     };
 },
 mounted() { 
@@ -31,14 +34,20 @@ mounted() {
 //     this.loadVideo("1.mp4")
 // },
 methods: {
-    loadVideo(id){
-        getVideo(id).then(response =>{
-            // console.log(id)
+    limit(){
+        postVideo(this.fileName,this.speed).then(response =>{
+            // console.log(response)
+        })
+        this.loadVideo()
+    },
+    loadVideo(){
+        getVideo(this.fileName).then(response =>{
+            console.log(response.data)
             // this.myPlayer.dispose()
-            // console.log(Object.entries(response.data[0])[0][1])
+            console.log(Object.entries(response.data[0])[0][1])
             let path = Object.entries(response.data[0])[0][1]
             this.videoSrc = require('../assets/'+path)
-            console.log(this.videoSrc)
+            // console.log(this.videoSrc)
             var player = this.$video('myVideo')
             // console.log(player);
             player.src({
@@ -47,10 +56,11 @@ methods: {
         })
     },
     changeVideo(file){
-        postVideo(file.name).then(response =>{
-        })
+        // postVideo(file.name).then(response =>{
+        // })
         // console.log("name"+file.name)
-        this.loadVideo(file.name);
+        // this.loadVideo(file.name);
+        this.fileName = file.name
     },
     initVideo() {
         //初始化视频方法
