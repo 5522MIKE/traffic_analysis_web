@@ -23,7 +23,7 @@ import {getIllegalData} from '../api/api.js'
                     if(this.temp!=GLOBAL.videoId){
                         this.loaddata()
                         this.temp = GLOBAL.videoId
-                        console.log(this.temp)
+                        // console.log(this.temp)
                     }else{
                         this.temp = GLOBAL.videoId
                     }
@@ -73,7 +73,7 @@ import {getIllegalData} from '../api/api.js'
         },
         mounted() {
                 this.$nextTick(() => {
-                    setInterval(this.loaddata, 5000);
+                    setInterval(this.idJudge, 500);
                 })
         },
         data () {

@@ -30,7 +30,7 @@ export default {
     // },
     mounted() {
             this.$nextTick(() => {
-                setInterval(this.idJudge, 5000);
+                setInterval(this.idJudge, 500);
             })
     },
     methods: {
