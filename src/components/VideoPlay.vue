@@ -38,28 +38,22 @@ mounted() {
 // },
 methods: {
     limit(){
-        postVideo(this.fileName,this.speed,GLOBAL.num).then(response =>{
-            GLOBAL.num = GLOBAL.num+1
-            console.log("num: "+GLOBAL.num)
+        postVideo(this.fileName,this.speed).then(response =>{
             // console.log(response)
         })
         this.$nextTick(() => {
-            setInterval(this.loadVideo(), 2000);
+            setInterval(this.loadVideo(), 5000);
         })
     },
     loadVideo(){
         getVideo(this.fileName).then(response =>{
-            console.log(response.data)
-            console.log(this.fileName)  
-            // this.myPlayer.dispose()
-            // console.log(Object.entries(response.data[0])[2][1])
-            GLOBAL.videoId = Object.entries(response.data[0])[2][1]
+            // GLOBAL.videoId = Object.entries(response.data[0])[2][1]
+            GLOBAL.videoId = response.data
             console.log(GLOBAL.videoId)
-            let path = Object.entries(response.data[0])[0][1]
+            // let path = Object.entries(response.data[0])[0][1]
+            let path = "1.mp4"
             this.videoSrc = require('../assets/'+path)
-            // console.log(this.videoSrc)
             var player = this.$video('myVideo')
-            // console.log(player);
             player.src({
                 src:this.videoSrc
             })
