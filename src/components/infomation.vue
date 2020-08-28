@@ -2,7 +2,7 @@
         <Layout :style="{margin:'10px',width:'1300px',height:'680px'}">
             <br>
             <div>
-                <date-picker type="date" clearable="true" placeholder="请选择上传时间" @on-change="getDate" :style="{float:'left',width:'300px'}"></date-picker>
+                <date-picker type="date" clearable placeholder="请选择上传时间" @on-change="getDate" :style="{float:'left',width:'300px'}"></date-picker>
                 <i-select v-model="illegalMassage" clearable placeholder="请选择违规行为" @on-change="getIllegal" :style="{width:'300px'}">
                     <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </i-select>
@@ -13,21 +13,30 @@
         </Layout>   
 </template>
 <script>
+import GLOBAL from '../api/global.js'
+// console.log("id"+ GLOBAL.videoId)
+import {getIllegalData} from '../api/api.js'
     const data1  = [];
-    for(let i=0; i<2 ; ++i){
-        data1.push({
-            id:  i,
-            plate: '粤B88888',
-            upload_time: '5201-3-14',
-            illegal_time: '20',
-            illegal: '车太贵',
-            img: 'https://dev-file.iviewui.com/YSlcnG8cnT6zMRGskMn4F5E0sghiFB9w/large'
-        })
-    }
     export default {
         methods:{
+                idJudge(){
+                    if(this.temp!=GLOBAL.videoId){
+                        this.loaddata()
+                        this.temp = GLOBAL.videoId
+                        // console.log(this.temp)
+                    }else{
+                        this.temp = GLOBAL.videoId
+                    }
+                },
+                loaddata(){
+                    getIllegalData(this.plate,GLOBAL.videoId,this.date,this.illegalMassage).then(response =>{
+                        this.data1 = response.data
+                        // console.log(GLOBAL.videoId)
+                        // console.log(this.date)
+                    })
+                },
                 search(){
-                    alert(this.value2+" : ")
+                    this.loaddata()
                 },
                 delete(index){
                     alert("delete:"+index)
@@ -38,27 +47,49 @@
                 },
                 getDate(date){
                     this.date=date
-                    alert(this.date)
+                    //alert(this.date)
+                    this.loaddata()
+                    // console.log(this.date)
                 },
                 // ! 测试参数传递的函数，正式使用前删除
                 getData(mydata){
-                    alert(mydata)
+                    // console.log(mydata)
+                    this.loaddata()
+                    
                 },
                 getIllegal(){
-                    alert(this.illegalMassage)
+                    // alert(this.illegalMassage)
+                    this.loaddata()
                 },
                 clear(){
+                    this.date = ''
                     this.plate = ''
+                    this.illegalMassage = ''
+                    this.loaddata()
                 }
+        },
+        created: function () {
+            this.loaddata()
+        },
+        mounted() {
+                this.$nextTick(() => {
+                    setInterval(this.idJudge, 500);
+                })
         },
         data () {
             return {
+                temp:'',
                 date:'', // *  日期数据
                 plate:'',  // * 搜索输入框数据
+                illegalMassage: '', // * 违规行为
                 columns1: [
                     {
                         title: 'ID',
                         key: 'id'
+                    },
+                    {
+                        title: '视频ID',
+                        key: 'videoId'
                     },
                     {
                         title: '车牌号',
@@ -105,31 +136,22 @@
                 data1: data1,
                 cityList: [
                     {
-                        value: 'New York',
-                        label: 'New York'
+                        value: '超速行驶',
+                        label: '超速行驶'
                     },
                     {
-                        value: 'London',
-                        label: 'London'
+                        value: '碾压实线',
+                        label: '碾压实线'
                     },
                     {
-                        value: 'Sydney',
-                        label: 'Sydney'
+                        value: '不礼让行人',
+                        label: '不礼让行人'
                     },
                     {
-                        value: 'Ottawa',
-                        label: 'Ottawa'
-                    },
-                    {
-                        value: 'Paris',
-                        label: 'Paris'
-                    },
-                    {
-                        value: 'Canberra',
-                        label: 'Canberra'
+                        value: '不按信号灯行驶',
+                        label: '不按信号灯行驶'
                     }
                 ],
-                illegalMassage: ''
             }
         }
     }
