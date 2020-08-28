@@ -56,16 +56,24 @@ export const getIllegalStatistics = (videoId) => {return axios(
 export const postSpeedLimit = (speed) => {return axios.post(`http://localhost:8000/api/SpeedLimit/`, {'speed': speed})}
 
 // 视频获取
-export const getVideo = (video_path) => {return axios(
+export const getVideo = (video_path,speed) => {return axios(
     {
         methods: 'get',
 	    url: 'http://localhost:8000/api/VideoYolo/',
 	    params: {
-            video_path: video_path
+            video_path: video_path,
+            speed: speed
 	    }
     }
 )}
-export const postVideo = (video_path, speed) => {return axios.post(`http://localhost:8000/api/Video/`, {'video_path': video_path,'speed': speed})}
+export const postVideo = (video_path, speed) => {return axios(
+    {
+        methods:'post',
+        url:'http://localhost:8000/api/Video/',
+        data:{'video_path': video_path,'speed': speed},
+        async:false,
+    }
+)}
     
 // export const postVideo = (video_path, speed) => {return axios(
 //     {

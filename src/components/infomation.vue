@@ -136,28 +136,20 @@ import {getIllegalData} from '../api/api.js'
                 data1: data1,
                 cityList: [
                     {
-                        value: 'New York',
-                        label: 'New York'
+                        value: '超速行驶',
+                        label: '超速行驶'
                     },
                     {
-                        value: 'London',
-                        label: 'London'
+                        value: '碾压实线',
+                        label: '碾压实线'
                     },
                     {
-                        value: 'Sydney',
-                        label: 'Sydney'
+                        value: '不礼让行人',
+                        label: '不礼让行人'
                     },
                     {
-                        value: 'Ottawa',
-                        label: 'Ottawa'
-                    },
-                    {
-                        value: 'Paris',
-                        label: 'Paris'
-                    },
-                    {
-                        value: 'Canberra',
-                        label: 'Canberra'
+                        value: '不按信号灯行驶',
+                        label: '不按信号灯行驶'
                     }
                 ],
             }

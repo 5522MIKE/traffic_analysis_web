@@ -23,7 +23,7 @@ export default {
 data() {
     return {
         // videoSrc:require("../assets/1.mp4"),
-        // videoSrc:require("../assets/1.mp4"),
+        // videoSrc1:require("../assets/video_result1.mp4"),
         speed:'',
         myPlayer:'',
         videoSrc:'',
@@ -37,6 +37,17 @@ mounted() {
 //     this.loadVideo("1.mp4")
 // },
 methods: {
+    download(){
+        getVideo().then(response =>{
+            // GLOBAL.videoId = Object.entries(response.data[0])[2][1]
+            GLOBAL.videoId = 1
+            console.log(GLOBAL.videoId)
+            let path = Object.entries(response.data)
+            // let path = "1.mp4"
+            console.log(path[0][0])
+            console.log(path[0][1])
+        })
+    },
     limit(){
         postVideo(this.fileName,this.speed).then(response =>{
             // console.log(response)
@@ -46,12 +57,14 @@ methods: {
         })
     },
     loadVideo(){
-        getVideo(this.fileName).then(response =>{
+        getVideo(this.fileName,this.speed).then(response =>{
             // GLOBAL.videoId = Object.entries(response.data[0])[2][1]
-            GLOBAL.videoId = response.data
+            GLOBAL.videoId = 1
             console.log(GLOBAL.videoId)
             // let path = Object.entries(response.data[0])[0][1]
-            let path = "1.mp4"
+            // let path = "1.mp4"
+            let path = response.data
+            console.log(response.data)
             this.videoSrc = require('../assets/'+path)
             var player = this.$video('myVideo')
             player.src({
