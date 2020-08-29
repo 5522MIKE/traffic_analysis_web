@@ -8,6 +8,7 @@
 + @jiaminghi/data-view@2.9.6
 + axios@0.19.2
 + view-design@4.3.2
++ v-viewer@1.5.1
 
 ## Build Setup
 
