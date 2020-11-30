@@ -4,7 +4,7 @@
 *此项目来自参与2020中国软件杯的20618团队*
 
 <p align="center">
-    <a href="https://github.com/Sh-Zh-7/intelligent-transportation-system/issues" style="text-decoration:none" >
+    <a href="https://github.com/5522MIKE/traffic_analysis_web/issues" style="text-decoration:none" >
         <img src="https://img.shields.io/github/issues/5522MIKE/traffic_analysis_web?color=orange" alt="issues"/>
     </a>
     <a href="https://github.com/5522MIKE/traffic_analysis_web" style="text-decoration:none" >
